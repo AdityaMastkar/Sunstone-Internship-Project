@@ -190,9 +190,9 @@
     margin-left: 20px;
   }
   .container .card .heading {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--light-text-color);
+    color: var(--text-color);
     white-space: nowrap;
   }
   .dropdown-container {
@@ -317,6 +317,7 @@
     justify-content: center;
     padding-top: 20px;
     border-top: 2px solid var(--bg-color);
+    font-style: var(--light-text-color);
   }
   .card-bottom p {
     margin-bottom: 20px;
@@ -336,7 +337,8 @@
     background-color: var(--primary-color);
   }
   .card-bottom span {
-    font-size: 12px;
+    font-weight: bold;
+    font-size: 14px;
     pointer-events: none;
   }
   .card-bottom ion-icon {
@@ -417,7 +419,7 @@
   height: 36px;  
   cursor: pointer;
   user-select: none;
-  filter: drop-shadow(0 3px 6px rgba(202, 174, 243, 0.5));
+  filter: drop-shadow(0 3px 6px rgba(225, 224, 228, 0.5));
   border-radius: 40px;
 }
 
