@@ -147,3 +147,87 @@ const inputChars = document.querySelector("#input-chars");
 inputTextElem.addEventListener("input", (e) => {
   inputChars.innerHTML = inputTextElem.value.length;
 })
+
+
+document.getElementById("speak-input-btn").addEventListener("click", () => {
+  const text = document.getElementById("input-text").value.trim();
+  if (!text) {
+    return;
+  }
+  speakText(text, inputLanguageDropdown.querySelector(".selected").dataset.value);
+});
+
+
+document.getElementById("speak-output-btn").addEventListener("click", () => {
+  const text = document.getElementById("output-text").value.trim();
+  if (!text) {
+    return;
+  }
+  speakText(text, outputLanguageDropdown.querySelector(".selected").dataset.value);
+});
+
+function speakText(text, langCode) {
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = langCode || "en-US";
+
+  window.speechSynthesis.speak(utterance);
+}
+
+const copyInputBtn = document.getElementById("copy-input-btn");
+const copyOutputBtn = document.getElementById("copy-output-btn");
+
+copyInputBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(inputTextElem.value).then(() => {
+  });
+});
+
+copyOutputBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(outputTextElem.value).then(() => {
+  });
+});
+
+function showCopiedMessage(button) {
+ 
+  const msg = document.createElement("span");
+  msg.textContent = "Copied!";
+  msg.style.position = "absolute";
+  msg.style.background = "#7a42ff";
+  msg.style.color = "#fff";
+  msg.style.padding = "4px 8px";
+  msg.style.borderRadius = "4px";
+  msg.style.fontSize = "0.9rem";
+  msg.style.top = "-30px";
+  msg.style.right = "0";
+  msg.style.whiteSpace = "nowrap";
+  msg.style.pointerEvents = "none";
+  msg.style.opacity = "1";
+  msg.style.transition = "opacity 0.5s ease";
+
+
+  button.style.position = "relative";
+  button.appendChild(msg);
+
+ 
+  setTimeout(() => {
+    msg.style.opacity = "0";
+  }, 800);
+  setTimeout(() => {
+    button.removeChild(msg);
+  }, 1300);
+}
+
+copyInputBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(inputTextElem.value).then(() => {
+    showCopiedMessage(copyInputBtn);
+  });
+});
+
+copyOutputBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(outputTextElem.value).then(() => {
+    showCopiedMessage(copyOutputBtn);
+  });
+});
+
