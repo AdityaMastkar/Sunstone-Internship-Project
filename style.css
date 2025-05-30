@@ -8,21 +8,6 @@
   --primary-text-color: #fff;
 }
 
-.page-heading {
-  position: fixed;        
-  top: -10px;              
-  left: 50%;              
-  transform: translateX(-50%);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 5.5rem;        
-  color: rgba(122, 66, 255, 0.1); 
-  user-select: none;
-  pointer-events: none;   
-  white-space: nowrap;
-  z-index: 0;             
-
-}
 
 button#speak-input-btn,
 button#speak-output-btn {
