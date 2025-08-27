@@ -75,7 +75,10 @@ function translate() {
     inputLanguageDropdown.querySelector(".selected").dataset.value;
   const outputLanguage =
     outputLanguageDropdown.querySelector(".selected").dataset.value;
-  const url = 
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${inputLanguage}&tl=${outputLanguage}&dt=t&q=${encodeURI(
+    inputText
+  )}`
+
   fetch(url)
     .then((response) => response.json())
     .then((json) => {
